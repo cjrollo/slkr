@@ -1,7 +1,21 @@
-# Create image based on the official Node 6 image from the dockerhub
+# Outcome: Run Angular in a container
+# Build it: docker build --rm -t rollo/slkr:alpine .
+# Run in the background:
+#   docker run -d --name slkr -P rollo/slkr:alpine
+# Run interactively:
+#   docker run --rm -it --name slkr -P rollo/slkr:alpine ash
+# Run without the default app:
+#   docker run -d --name slkr -P -v $(pwd)/app://usr/src/app rollo/slkr:alpine
+
+
+# Base docker image
 FROM node:alpine
 # Me ;-)
 MAINTAINER rollo
+
+# Install any dependencies
+#apk update -y && \
+#apk add -y \
 
 # Create a directory where our app will be placed
 RUN mkdir -p /usr/src/app
